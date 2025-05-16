@@ -1,77 +1,83 @@
-# 🤖 Chatbot Chaudière – Générateur AMDEC Automatisé
+# 🤖 Chatbot Chaudière – Générateur AMDEC & Gammes Automatisé (Projet Intelligent)
 
-Ce projet représente une interface intelligente pour l’analyse de la maintenance préventive d’une chaudière industrielle.  
-Il permet d'importer un fichier Excel historique, de générer automatiquement une AMDEC, de visualiser les criticités, et de proposer des actions correctives à travers une interface web interactive.
-
----
-
-## 🎯 Objectif du projet
-
-- Automatiser la génération de l’AMDEC à partir de l’historique d’arrêts
-- Calculer la criticité (C = F × G × D)
-- Proposer des actions correctives par sous-composant critique
-- Visualiser les résultats sous forme de tableau dynamique et de graphiques
-- Simplifier le travail du service maintenance avec un outil intégré
+Ce projet représente une solution semi-automatisée de maintenance préventive d’une chaudière industrielle.  
+Il offre une interface web pour importer un fichier Excel historique, générer dynamiquement une AMDEC colorée, produire des gammes de maintenance personnalisées à partir de templates, et visualiser les criticités sous forme de graphique.
 
 ---
 
-## ⚙️ Fonctionnalités principales
+## ✅ Fonctionnalités actuelles
 
-- 📁 **Import Excel** : Fichier historique structuré avec arrêts par composant
-- 🧠 **Génération automatique de l’AMDEC** via analyse Python
-- 📊 **Calcul des facteurs** : Fréquence (F), Gravité (G), Détectabilité (D)
-- 🎯 **Affichage coloré** selon la criticité :
-  - Rouge : C ≥ 40
-  - Orange : 20 ≤ C < 40
-  - Gris : C < 20 (masqué ou désactivé)
-- 📈 **Graphique de statistiques** : Nombre de sous-composants par niveau de criticité
-- 📄 **Téléchargement de l'AMDEC** : Exportable (Excel ou PDF à intégrer)
-- 🖼️ Logos TAQA Maroc + AMDEC
+- 📁 Import de fichiers Excel avec historiques d’arrêts
+- 🧠 Génération automatique d’un tableau AMDEC (F, G, D, C)
+- 📄 Création d’une gamme de maintenance basée sur des **templates Word**
+- 🎯 Criticité calculée automatiquement avec **mise en couleur dynamique**
+- 📊 Affichage d’un **graphe de criticité**
+- 🖼️ Intégration de logos (TAQA, AMDEC)
+- Interface HTML + JS fluide et interactive
 
 ---
 
-## 🧪 Technologies utilisées
+## ⚙️ Technologies utilisées
 
-- **Python 3.10** : Traitement logique
-- **Pandas, openpyxl** : Lecture/traitement Excel
-- **python-docx (optionnel)** : Génération Word des gammes
-- **HTML, CSS, JavaScript** : Interface utilisateur
-- **Chart.js** : Visualisation graphique
-- **Flask (ou autre)** : Back-end pour test local (si activé)
+- **Python 3.10** (Pandas, openpyxl, python-docx)
+- **HTML / CSS / JavaScript** pour l’interface
+- **Chart.js** pour les graphiques dynamiques
+- **Jinja2 / Templates personnalisés** pour la génération de documents
 
 ---
 
-## 📂 Arborescence type
+## 📂 Arborescence du projet
 
 ```
 chatbot_chaudiere_nv/
 │
-├── index.html              # Page principale
-├── style.css               # Design moderne et responsive
-├── script.js               # Logique dynamique + affichage graphique
-├── amdec_generator.py      # Script d’analyse AMDEC depuis Excel
-├── uploads/                # Dossier pour fichiers Excel importés
-├── images/                 # Logos, composants
+├── index.html
+├── style.css
+├── script.js
+├── amdec_generator.py
+├── maintenance_planner.py
+├── templates/                # Templates Word (gammes)
+├── data/                     # Historiques Excel
+├── images/                   # Logos, composants
 └── README.md
 ```
 
 ---
 
-## 📎 Exemple de fichier attendu (Excel)
+## 🚀 Objectif de professionnalisation
 
-Le fichier doit contenir :
-- Composant / Sous-composant
-- Mode de défaillance
-- Cause, Effet
-- Fréquence, Gravité, Détectabilité (ou automatiquement détectés)
+Le projet évolue vers une solution complète **assistée par intelligence artificielle**, intégrant :
+
+### 🧱 1. Utilisation systématique de templates
+- Formatage professionnel des gammes selon un modèle Word standardisé
+- Génération automatique multi-gammes (1 gamme par composant)
+
+### 🔗 2. Connexion à un moteur **RAG + LLM**
+- Base documentaire (PDF, Word, Excel, images)
+- Intégration dans un moteur vectoriel (ex : ChromaDB)
+- Utilisation d’un modèle LLM (Claude ou LLaMA3) pour répondre à :
+  - "Quel est le défaut probable ?"
+  - "Donne-moi la gamme de l’économiseur HT"
+  - "Quelle action corrective appliquer au percement ?"
+
+### 🧠 3. Objectif final : assistant Claude
+
+Le projet sera connecté à Claude pour :
+- Générer automatiquement AMDEC + gamme
+- Répondre à des questions techniques à partir des documents
+- Recommander des plans d’action contextualisés
+- Récupérer les templates et les fichiers associés à chaque réponse
 
 ---
 
-## 🔗 Démo (optionnel si hébergé)
+## 📌 Livrables attendus pour Claude
 
-[https://hamza-chaudiere-ai.github.io/chatbot_chaudiere_nv](https://hamza-chaudiere-ai.github.io/chatbot_chaudiere_nv)
+- `README.md` explicatif clair
+- `amdec_generator.py`, `maintenance_planner.py`
+- Templates `.docx`, fichiers Excel test
+- Dossier `/images`, `/data`, `/templates`
+- JSONL ou base vectorielle pour assistant Claude
 
 ---
 
-Développé par **Hamza**  
-Projet PFE Maintenance 2025 – TAQA / EMSI 🏭
+Développé par **Hamza** – PFE Maintenance TAQA / EMSI – 2025 🏭
